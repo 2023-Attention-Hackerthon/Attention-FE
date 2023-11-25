@@ -9,6 +9,8 @@ import LoginScreen from "../screens/login/LoginScreen";
 import RoutePath from "./routePath";
 import KakaoLoginWebview from "../screens/login/KakaoLoginWebview";
 import KakaoLoginRedirect from "../screens/login/KakaoLoginRedirect";
+import { Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Typography from "../components/common/Typography";
 
 export default function Navigation() {
   return (
@@ -22,13 +24,35 @@ const Stack = createStackNavigator();
 
 function RootNavigator() {
   const { isAuthenticated } = useAppRepository();
-
+  const Home = ({ navigation }) => {
+    // 로그인 여부에 따른 navigation 동작 여부
+    return (
+      <View style={styles.container}>
+        <ImageBackground source={require("../assets/images/main.png")} style={styles.backgroundImage} />
+        {/* <Pressable style={{ zIndex: 10, borderWidth: 10, position: "absolute", top: 200 }} onPress={() => navigation.navigate(RoutePath.MainStack)}>
+          <Text>Press</Text>
+        </Pressable> */}
+        <View style={styles.titleWrap}>
+          <Typography style={styles.title}>SNS 계정으로 빨리 시작해 보세요</Typography>
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => {
+              navigation.navigate(RoutePath.MainStack);
+            }}
+          >
+            <Image source={require("../assets/images/kakao.png")} style={styles.loginIcon} alt="kakao-icon" />
+          </TouchableOpacity>
+        </View>
+        {/* 로그인 여부에 따른 버튼 노출 여부 */}
+      </View>
+    );
+  };
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={isAuthenticated ? RoutePath.MainStack : RoutePath.LoginScreen}
+      // initialRouteName={isAuthenticated ? RoutePath.MainStack : RoutePath.LoginScreen}
     >
       {(() => {
         if (!isAuthenticated) {
@@ -42,15 +66,41 @@ function RootNavigator() {
         }
         return (
           <>
-            <Stack.Screen name={RoutePath.MainStack} component={MainNavigator} />
-            <Stack.Screen
-              name={RoutePath.NotFoundScreen}
-              component={NotFoundScreen}
-              options={{ title: "Oops!" }}
-            />
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name={RoutePath.MainStack} component={MainNavigator} options={{ gestureEnabled: false }} />
+            <Stack.Screen name={RoutePath.NotFoundScreen} component={NotFoundScreen} options={{ title: "Oops!" }} />
           </>
         );
       })()}
     </Stack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  backgroundImage: {
+    width: "100%",
+    height: "100%",
+  },
+  titleWrap: {
+    flex: 1,
+    position: "absolute",
+    display: "flex",
+    alignSelf: "center",
+    bottom: 110,
+  },
+  title: {
+    color: "#ffffff",
+    fontSize: 16,
+  },
+  loginButton: {
+    alignItems: "center",
+  },
+  loginIcon: {
+    width: 48,
+    height: 48,
+    marginTop: 16,
+  },
+});
