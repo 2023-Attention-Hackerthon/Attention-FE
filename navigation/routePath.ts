@@ -8,6 +8,7 @@ enum RoutePath {
   MyCardsScreen = "MyCardsScreen",
   MyCardDetailScreen = "MyCardDetailScreen",
   CreateCardScreen = "CreateCardScreen",
+  LoadingCard = "LoadingCard",
   MyWalletsScreen = "MyWalletsScreen",
   MyWalletDetailScreen = "MyWalletDetailScreen",
 

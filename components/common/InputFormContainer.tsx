@@ -10,17 +10,20 @@ export default function InputFormContainer({
   question,
   children,
   helperText,
+  caption,
 }: {
-  formNumber: number;
+  formNumber?: number;
   question: string;
+  caption?: string;
   helperText?: string;
   children: ReactNode;
 }) {
   return (
     <View style={styles.inputContainer}>
       <View style={{ marginBottom: 20, gap: 10, height: 130 }}>
-        <FormNumber>{formNumber}</FormNumber>
+        {formNumber && <FormNumber>{formNumber}</FormNumber>}
         <Typography type={TextType.Title1}>{question}</Typography>
+        {caption && <Typography style={{ color: Colors.text.alternative }}>{caption}</Typography>}
       </View>
       {children}
       {helperText && <Typography type={TextType.Chips}>{helperText}</Typography>}

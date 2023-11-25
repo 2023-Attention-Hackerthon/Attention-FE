@@ -1,15 +1,20 @@
 export enum Gender {
-  Man = "남자",
-  Woman = "여자",
-  None = "선택 안 함",
+  Man = "MALE",
+  Woman = "FEMALE",
+  None = null,
 }
 
 export type Card = {
   id: number;
-  nickname: string;
-  contact: string;
-  gender: Gender;
+  nickname: string; // required
+  contact: string; // required
+  gender: Gender; // required
+  cardname: string; //required
   age: number;
   mbti: string;
+  instagramId: string;
+  blogUrl: string;
+  youtubeUrl: string;
+  githubId: string;
 };
 export type CardList = Card[];
