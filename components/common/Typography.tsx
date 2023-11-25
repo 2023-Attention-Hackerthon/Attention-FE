@@ -10,13 +10,13 @@ export default function Typography({ type, style, ...props }: TypographyProps) {
 }
 
 export const enum TextType {
-  /** size: 24, weight: 600 */
+  /** size: 24, weight: 700 */
   Title1 = 0,
-  /** size: 22, weight: 600 */
+  /** size: 22, weight: 700 */
   Title2 = 1,
-  /** size: 20, weight: 600 */
+  /** size: 20, weight: 700 */
   Title3 = 2,
-  /** size: 18, weight: 600 */
+  /** size: 18, weight: 700 */
   Title4 = 3,
 
   /** size: 20, weight: 500 */
@@ -46,43 +46,53 @@ export const enum TextType {
 
 function getTextProps(type?: TextType | undefined): {
   fontSize: number;
-  fontWeight: "400" | "600" | "500";
+  fontWeight: "400" | "700" | "500";
 } {
   let fontSize: number = 16;
-  let fontWeight: "400" | "600" | "500" = "400";
+  let fontWeight: "400" | "700" | "500" = "400";
   switch (type) {
     // title
     case 0:
       fontSize = 24;
+      fontWeight = "700";
       break;
     case 1:
       fontSize = 22;
+      fontWeight = "700";
       break;
     case 2:
       fontSize = 20;
+      fontWeight = "700";
       break;
     case 3:
       fontSize = 18;
+      fontWeight = "700";
       break;
     // label
     case 4:
       fontSize = 20;
       fontWeight = "500";
+      fontWeight = "500";
       break;
     case 5:
       fontSize = 18;
+      fontWeight = "500";
       break;
     case 6:
       fontSize = 16;
+      fontWeight = "500";
       break;
     case 7:
       fontSize = 14;
+      fontWeight = "500";
       break;
     case 8:
       fontSize = 12;
+      fontWeight = "500";
       break;
     case 9:
       fontSize = 10;
+      fontWeight = "500";
       break;
     //body
     case 10:
@@ -91,14 +101,17 @@ function getTextProps(type?: TextType | undefined): {
       break;
     case 11:
       fontSize = 14;
+      fontWeight = "400";
       break;
     //chips
     case 12:
       fontSize = 12;
+      fontWeight = "400";
       break;
     //caption
     case 13:
       fontSize = 10;
+      fontWeight = "400";
       break;
   }
   return { fontSize, fontWeight };
