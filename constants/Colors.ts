@@ -1,4 +1,4 @@
-export default Colors = {
+const Colors = {
   primary: {
     normal: "#DA8FFF",
     alternative: "#ECC7FF",
@@ -25,3 +25,5 @@ export default Colors = {
     assistive: "#F8F7F8",
   },
 };
+
+export default Colors;
