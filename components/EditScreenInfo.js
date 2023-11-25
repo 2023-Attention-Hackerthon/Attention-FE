@@ -1,7 +1,6 @@
 import * as WebBrowser from "expo-web-browser";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
-import Colors from "../constants/Colors";
 import Typography, { TextType } from "./common/Typography";
 
 export default function EditScreenInfo({ path }) {
@@ -20,7 +19,7 @@ export default function EditScreenInfo({ path }) {
 
       <View style={styles.helpContainer}>
         <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-          <Typography style={styles.helpLinkText} lightColor={Colors.light.tint}>
+          <Typography style={styles.helpLinkText}>
             Tap here if your app doesn't automatically update after making changes
           </Typography>
         </TouchableOpacity>
