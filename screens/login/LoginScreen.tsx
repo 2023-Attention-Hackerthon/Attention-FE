@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import useToken from "../hooks/useToken";
-import Typography from "../components/common/Typography";
+import useToken from "../../hooks/useToken";
+import Typography from "../../components/common/Typography";
 import { View } from "react-native";
 
 export default function LoginScreen({ navigation }) {

@@ -5,10 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import MainNavigator from "./MainNavigator";
 import useAppRepository from "../hooks/useAppRepository";
-import LoginScreen from "../screens/LoginScreen";
+import LoginScreen from "../screens/login/LoginScreen";
 import RoutePath from "./routePath";
-import KakaoLoginWebview from "../screens/KakaoLoginWebview";
-import KakaoLoginRedirect from "../screens/KakaoLoginRedirect";
+import KakaoLoginWebview from "../screens/login/KakaoLoginWebview";
+import KakaoLoginRedirect from "../screens/login/KakaoLoginRedirect";
 
 export default function Navigation() {
   return (

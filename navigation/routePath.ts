@@ -1,15 +1,17 @@
 enum RoutePath {
   MainStack = "MainStack",
 
-  MyCardTab = "카드",
-  WalletTab = "지갑",
-  MyPageTab = "마이",
+  MyCardTab = "MyCardTab",
+  WalletTab = "WalletTab",
+  MyPageTab = "MyPageTab",
 
-  MyCardDetailStack = "MyCardDetailStack",
-  MyCardsScreen = "내 카드 리스트",
-  MyCardDetailScreen = "내 카드",
+  MyCardsScreen = "MyCardsScreen",
+  MyCardDetailScreen = "MyCardDetailScreen",
 
-  LoginScreen = "LoginPage",
+  MyWalletsScreen = "MyWalletsScreen",
+  MyWalletDetailScreen = "MyWalletDetailScreen",
+
+  LoginScreen = "LoginScreen",
   NotFoundScreen = "NotFoundScreen",
 
   KakaoLoginWebview = "KakaoLoginWebview",

@@ -1,16 +1,16 @@
 import React from "react";
 import { View } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import Typography from "../components/common/Typography";
-import { Card } from "../types/Card";
+import Typography from "../../components/common/Typography";
+import { Wallet } from "../../types/Wallet";
 
 type ParamType = {
-  card: Card;
+  wallet: Wallet;
 };
 
-type DetailScreenProps = NativeStackScreenProps<ParamType, "card">;
+type DetailScreenProps = NativeStackScreenProps<ParamType, "wallet">;
 
-export default function MyCardDetailScreen({
+export default function MyWalletDetailScreen({
   // navigation: { setOptions },
   route: { params },
 }: DetailScreenProps) {
@@ -18,7 +18,7 @@ export default function MyCardDetailScreen({
 
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
-      <Typography>내 카드 {id} 디테일 페이지</Typography>
+      <Typography>내 지갑 {id} 디테일 페이지</Typography>
     </View>
   );
 }

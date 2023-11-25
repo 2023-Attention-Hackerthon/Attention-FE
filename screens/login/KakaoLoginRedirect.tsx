@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native";
-import Typography from "../components/common/Typography";
+import Typography from "../../components/common/Typography";
 import { StyleSheet } from "react-native";
 
 export default function KakaoLoginRedirect({ navigation, route }) {
@@ -20,11 +20,15 @@ export default function KakaoLoginRedirect({ navigation, route }) {
           //navigate('/auth/finish');
           console.log("가져오기 성공");
           console.log(getRes.data);
-          axios.post(`https://www.attention.n-e.kr/v1/auth/kakao/signup?idtoken=${getRes.data.data.idToken}`).then((postRes) => {
-            console.log("post 성공" + postRes.data);
-            // navigation.navigate("TabOneScreen");
-            navigation.popToTop();
-          });
+          axios
+            .post(
+              `https://www.attention.n-e.kr/v1/auth/kakao/signup?idtoken=${getRes.data.data.idToken}`
+            )
+            .then((postRes) => {
+              console.log("post 성공" + postRes.data);
+              // navigation.navigate("TabOneScreen");
+              navigation.popToTop();
+            });
         })
         .catch((error) => {
           console.error("Failed to handle Kakao login:", error);
