@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TextProps } from "react-native";
 
 type TypographyProps = {
-  type: TextType;
+  type?: TextType;
 } & TextProps;
 
 export default function Typography({ type, style, ...props }: TypographyProps) {
@@ -44,7 +44,7 @@ export const enum TextType {
   Caption = 13,
 }
 
-function getTextProps(type?: TextType): {
+function getTextProps(type?: TextType | undefined): {
   fontSize: number;
   fontWeight: "400" | "600" | "500";
 } {
@@ -100,8 +100,6 @@ function getTextProps(type?: TextType): {
     case 13:
       fontSize = 10;
       break;
-      return { fontSize, fontWeight };
   }
-  console.log(fontSize, fontWeight);
   return { fontSize, fontWeight };
 }
