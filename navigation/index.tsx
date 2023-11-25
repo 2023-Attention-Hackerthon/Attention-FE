@@ -29,10 +29,7 @@ function RootNavigator() {
     // 로그인 여부에 따른 navigation 동작 여부
     return (
       <View style={styles.container}>
-        <ImageBackground
-          source={require("../assets/images/main.png")}
-          style={styles.backgroundImage}
-        />
+        <ImageBackground source={require("../assets/images/main.png")} style={styles.backgroundImage} />
         <View style={styles.titleWrap}>
           <Typography style={styles.title}>SNS 계정으로 빨리 시작해 보세요</Typography>
           <TouchableOpacity
@@ -41,11 +38,7 @@ function RootNavigator() {
               navigation.navigate(RoutePath.MainStack);
             }}
           >
-            <Image
-              source={require("../assets/images/kakao.png")}
-              style={styles.loginIcon}
-              alt="kakao-icon"
-            />
+            <Image source={require("../assets/images/kakao.png")} style={styles.loginIcon} alt="kakao-icon" />
           </TouchableOpacity>
         </View>
         {/* 로그인 여부에 따른 버튼 노출 여부 */}
@@ -72,17 +65,9 @@ function RootNavigator() {
         return (
           <>
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen
-              name={RoutePath.MainStack}
-              component={MainNavigator}
-              options={{ gestureEnabled: false }}
-            />
+            <Stack.Screen name={RoutePath.MainStack} component={MainNavigator} options={{ gestureEnabled: false }} />
             <Stack.Screen name={RoutePath.CreateCardScreen} component={CreateCardScreen} />
-            <Stack.Screen
-              name={RoutePath.NotFoundScreen}
-              component={NotFoundScreen}
-              options={{ title: "Oops!" }}
-            />
+            <Stack.Screen name={RoutePath.NotFoundScreen} component={NotFoundScreen} options={{ title: "Oops!" }} />
           </>
         );
       })()}
