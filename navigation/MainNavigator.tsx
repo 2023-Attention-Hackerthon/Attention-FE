@@ -1,31 +1,43 @@
 // Learn more about createBottomTabNavigator:
 // https://reactnavigation.org/docs/bottom-tab-navigator
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
+import RoutePath from "./routePath";
 
 const BottomTab = createBottomTabNavigator();
 
 export default function MainNavigator() {
   return (
-    <BottomTab.Navigator initialRouteName="TabOne">
+    <BottomTab.Navigator initialRouteName={RoutePath.MyCardTab}>
       <BottomTab.Screen
-        name="TabOne"
+        name={RoutePath.MyCardTab}
         component={TabOneNavigator}
         options={{
+          tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign size={30} name="idcard" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name={RoutePath.WalletTab}
         component={TabTwoNavigator}
         options={{
+          tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <SimpleLineIcons size={30} name="wallet" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name={RoutePath.MyPageTab}
+        component={TabTwoNavigator}
+        options={{
+          tabBarLabelPosition: "below-icon",
+          headerShown: false,
+          tabBarIcon: ({ color }) => <AntDesign size={30} name="user" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -34,9 +46,6 @@ export default function MainNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
