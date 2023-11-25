@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Gender } from "../../types/Card";
 import InputFormContainer from "../../components/common/InputFormContainer";
 import UnderlinedInput from "../../components/common/UnderlinedInput";
-import UnderlinedSelectForm from "../../components/common/UnderlinedSelectForm";
+// import UnderlinedSelectForm from "../../components/common/UnderlinedSelectForm";
 import { ScrollView } from "react-native";
 
 export default function CreateCardScreen() {
@@ -25,12 +25,12 @@ export default function CreateCardScreen() {
       </InputFormContainer>
       <InputFormContainer question={`당신의 성별을 \n알려주세요.`} formNumber={2}>
         {/* todo */}
-        <UnderlinedSelectForm
+        {/* <UnderlinedSelectForm
           options={["남자", "여자", "선택 안 함"]}
           searchPlaceholder="성별을 선택해주세요"
           defaultValue={card.gender}
           onSelect={(_, gender) => setCard((prevCard) => ({ ...prevCard, gender }))}
-        />
+        /> */}
       </InputFormContainer>
       <InputFormContainer question={`당신의 나이를\n알려주세요.`} formNumber={3}>
         <UnderlinedInput
