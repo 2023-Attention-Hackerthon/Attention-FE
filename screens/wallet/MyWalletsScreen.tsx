@@ -22,6 +22,7 @@ export default function MyWalletsScreen() {
       },
     });
   };
+
   const { data, isLoading, isError } = useQuery({
     queryKey: ["getWalletList"],
     queryFn: getWalletList,

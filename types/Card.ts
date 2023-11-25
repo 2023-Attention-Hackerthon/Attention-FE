@@ -10,11 +10,15 @@ export type Card = {
   contact: string; // required
   gender: Gender; // required
   cardname: string; //required
+  introduce: string;
+  adjective: string[];
   age: number;
   mbti: string;
   instagramId: string;
   blogUrl: string;
   youtubeUrl: string;
   githubId: string;
+
+  colorCode: string;
 };
 export type CardList = Card[];
