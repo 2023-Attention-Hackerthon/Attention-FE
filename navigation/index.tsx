@@ -7,6 +7,8 @@ import MainNavigator from "./MainNavigator";
 import useAppRepository from "../hooks/useAppRepository";
 import LoginScreen from "../screens/LoginScreen";
 import RoutePath from "./routePath";
+import KakaoLoginWebview from "../screens/KakaoLoginWebview";
+import KakaoLoginRedirect from "../screens/KakaoLoginRedirect";
 
 export default function Navigation() {
   return (
@@ -22,22 +24,21 @@ function RootNavigator() {
   const { isAuthenticated } = useAppRepository();
 
   return (
-    <Stack.Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName={isAuthenticated ? RoutePath.MainStack : RoutePath.LoginScreen}
-    >
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={isAuthenticated ? RoutePath.MainStack : RoutePath.LoginScreen}>
       {(() => {
         if (!isAuthenticated) {
-          return <Stack.Screen name={RoutePath.LoginScreen} component={LoginScreen} />;
+          return (
+            <>
+              <Stack.Screen name={RoutePath.LoginScreen} component={LoginScreen} />
+              <Stack.Screen name={RoutePath.KakaoLoginWebview} component={KakaoLoginWebview} />
+              <Stack.Screen name={RoutePath.KakaoLoginRedirect} component={KakaoLoginRedirect} />
+            </>
+          );
         }
         return (
           <>
             <Stack.Screen name={RoutePath.MainStack} component={MainNavigator} />
-            <Stack.Screen
-              name={RoutePath.NotFoundScreen}
-              component={NotFoundScreen}
-              options={{ title: "Oops!" }}
-            />
+            <Stack.Screen name={RoutePath.NotFoundScreen} component={NotFoundScreen} options={{ title: "Oops!" }} />
           </>
         );
       })()}

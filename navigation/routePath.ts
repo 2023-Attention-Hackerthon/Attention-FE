@@ -7,6 +7,9 @@ enum RoutePath {
 
   LoginScreen = "LoginPage",
   NotFoundScreen = "NotFoundScreen",
+
+  KakaoLoginWebview = "KakaoLoginWebview",
+  KakaoLoginRedirect = "KakaoLoginRedirect",
 }
 
 export default RoutePath;
