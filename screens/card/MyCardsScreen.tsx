@@ -1,10 +1,10 @@
 import React from "react";
 import { View } from "react-native";
-import Typography from "../components/common/Typography";
+import Typography from "../../components/common/Typography";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import RoutePath from "../navigation/routePath";
-import { Card, CardList } from "../types/Card";
+import RoutePath from "../../navigation/routePath";
+import { Card, CardList } from "../../types/Card";
 
 export default function MyCardsScreen() {
   const navigation = useNavigation();
@@ -22,9 +22,9 @@ export default function MyCardsScreen() {
 
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
-      {mockCards.map(({ id }) => (
-        <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={id}>
-          <Typography>내 카드 페이지 {id}</Typography>
+      {mockCards.map((card) => (
+        <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={card.id}>
+          <Typography>내 카드 페이지 {card.id}</Typography>
         </TouchableOpacity>
       ))}
     </View>

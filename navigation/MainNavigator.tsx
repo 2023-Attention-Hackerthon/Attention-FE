@@ -7,8 +7,15 @@ import { createStackNavigator } from "@react-navigation/stack";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import RoutePath from "./routePath";
 import MyCardTabNavigator from "./MyCardTabNavigator";
+import MyWalletTabNavigator from "./MyWalletTabNavigator";
+import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 
 const BottomTab = createBottomTabNavigator();
+
+export const TabNavigatorOptions: NativeStackNavigationOptions = {
+  headerTitleAlign: "left",
+  headerBackTitleVisible: false,
+};
 
 export default function MainNavigator() {
   return (
@@ -24,7 +31,7 @@ export default function MainNavigator() {
       />
       <BottomTab.Screen
         name={RoutePath.WalletTab}
-        component={TabTwoNavigator}
+        component={MyWalletTabNavigator}
         options={{
           tabBarLabelPosition: "below-icon",
           headerShown: false,
