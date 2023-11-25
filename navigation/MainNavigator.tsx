@@ -3,16 +3,13 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useColorScheme } from "react-native";
 
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 
 const BottomTab = createBottomTabNavigator();
 
-export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
+export default function MainNavigator() {
   return (
     <BottomTab.Navigator initialRouteName="TabOne">
       <BottomTab.Screen
