@@ -5,7 +5,7 @@ const TOKEN_STORAGE_KEY = "token_storage_key";
 
 export default function useToken() {
   const [token, setToken] = useState<string | undefined>(undefined);
-
+  const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
   const isTokenExist = _.isEmpty(token);
 
   return {
@@ -13,7 +13,7 @@ export default function useToken() {
     isTokenExist,
 
     isAuthenticated: true,
-
+    accessToken,
     // getTokenStorage,
     setTokenStorage: setToken,
     // clearToken,
