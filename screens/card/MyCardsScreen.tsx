@@ -1,30 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Card as CardType, CardList } from "../../types/Card";
 import Typography, { TextType } from "../../components/common/Typography";
 import CardTemplate from "../../components/CardTemplate";
 import Colors from "../../constants/Colors";
 import _ from "lodash";
-import CardComponent from "../../components/common/CardComponent";
 import { baseAxios } from "../../apis/baseAxios";
 import { useQuery } from "@tanstack/react-query";
 import { ErrorText, LoadingText } from "../wallet/MyWalletDetailScreen";
-import RoutePath from "../../navigation/routePath";
+import CardPreview from "../../components/CardPreview";
+import { CardList } from "../../types/Card";
 
 export default function MyCardsScreen() {
   const [cards, setCards] = useState<CardList>([]);
-  const navigation = useNavigation();
-
-  const navigateDetailCardPage = (card: CardType) => {
-    //@ts-ignore
-    navigation.navigate(RoutePath.MyCardDetailScreen, {
-      params: {
-        card,
-      },
-    });
-  };
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["getCardList"],
@@ -58,11 +46,7 @@ export default function MyCardsScreen() {
         if (_.isEmpty(cards)) {
           return <EmptyCard />;
         }
-        return cards.map((card) => (
-          //  <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={card.id}>
-          <CardComponent key={card.id} card={card} />
-          //  </TouchableOpacity>
-        ));
+        return cards.map((card) => <CardPreview card={card} key={card.id} />);
       })()}
     </ScrollView>
   );
