@@ -8,14 +8,8 @@ import TabTwoScreen from "../screens/TabTwoScreen";
 import RoutePath from "./routePath";
 import MyCardTabNavigator from "./MyCardTabNavigator";
 import MyWalletTabNavigator from "./MyWalletTabNavigator";
-import { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 
 const BottomTab = createBottomTabNavigator();
-
-export const TabNavigatorOptions: NativeStackNavigationOptions = {
-  headerTitleAlign: "left",
-  headerBackTitleVisible: false,
-};
 
 export default function MainNavigator() {
   return (
