@@ -5,8 +5,6 @@ import UnderlinedInput from "../../components/common/UnderlinedInput";
 // import UnderlinedSelectForm from "../../components/common/UnderlinedSelectForm";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import Typography from "../../components/common/Typography";
-import RoutePath from "../../navigation/routePath";
-import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
 
 export default function CreateCardScreen() {
@@ -25,16 +23,16 @@ export default function CreateCardScreen() {
   //   },
   // });
 
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
-  const navigateLoadingCreatePage = () => {
-    //@ts-ignore
-    navigation.navigate(RoutePath.CreateCardScreen, {
-      params: {
-        card,
-      },
-    });
-  };
+  // const navigateLoadingCreatePage = () => {
+  //   //@ts-ignore
+  //   navigation.navigate(RoutePath.CreateCardScreen, {
+  //     params: {
+  //       card,
+  //     },
+  //   });
+  // };
 
   const disabled = useMemo(() => {
     if (!card?.nickname || !card.gender || !card.gender) {
@@ -105,7 +103,7 @@ export default function CreateCardScreen() {
               alignItems: "center",
             }}
             disabled={disabled}
-            // onPress={createCard} 
+            // onPress={createCard}
           >
             <Typography>완료하기</Typography>
           </TouchableOpacity>
