@@ -4,9 +4,9 @@ import { AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import RoutePath from "./routePath";
+import MyCardTabNavigator from "./MyCardTabNavigator";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -15,11 +15,11 @@ export default function MainNavigator() {
     <BottomTab.Navigator initialRouteName={RoutePath.MyCardTab}>
       <BottomTab.Screen
         name={RoutePath.MyCardTab}
-        component={TabOneNavigator}
+        component={MyCardTabNavigator}
         options={{
           tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: ({ color }) => <AntDesign size={30} name="idcard" color={color} />,
+          tabBarIcon: (props) => <AntDesign name="idcard" {...props} />,
         }}
       />
       <BottomTab.Screen
@@ -28,7 +28,7 @@ export default function MainNavigator() {
         options={{
           tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: ({ color }) => <SimpleLineIcons size={30} name="wallet" color={color} />,
+          tabBarIcon: (props) => <SimpleLineIcons name="wallet" {...props} />,
         }}
       />
       <BottomTab.Screen
@@ -37,7 +37,7 @@ export default function MainNavigator() {
         options={{
           tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: ({ color }) => <AntDesign size={30} name="user" color={color} />,
+          tabBarIcon: (props) => <AntDesign name="user" {...props} />,
         }}
       />
     </BottomTab.Navigator>
@@ -49,22 +49,17 @@ export default function MainNavigator() {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator();
-
-function TabOneNavigator() {
-  return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen name="TabOneScreen" component={TabOneScreen} options={{ headerTitle: "Tab One Title" }} />
-    </TabOneStack.Navigator>
-  );
-}
 
 const TabTwoStack = createStackNavigator();
 
 function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
-      <TabTwoStack.Screen name="TabTwoScreen" component={TabTwoScreen} options={{ headerTitle: "Tab Two Title" }} />
+      <TabTwoStack.Screen
+        name="TabTwoScreen"
+        component={TabTwoScreen}
+        options={{ headerTitle: "Tab Two Title" }}
+      />
     </TabTwoStack.Navigator>
   );
 }
