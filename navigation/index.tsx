@@ -9,7 +9,7 @@ import LoginScreen from "../screens/login/LoginScreen";
 import RoutePath from "./routePath";
 import KakaoLoginWebview from "../screens/login/KakaoLoginWebview";
 import KakaoLoginRedirect from "../screens/login/KakaoLoginRedirect";
-import { Image, ImageBackground, Pressable, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ImageBackground, StyleSheet, TouchableOpacity, View } from "react-native";
 import Typography from "../components/common/Typography";
 
 export default function Navigation() {
@@ -29,9 +29,6 @@ function RootNavigator() {
     return (
       <View style={styles.container}>
         <ImageBackground source={require("../assets/images/main.png")} style={styles.backgroundImage} />
-        {/* <Pressable style={{ zIndex: 10, borderWidth: 10, position: "absolute", top: 200 }} onPress={() => navigation.navigate(RoutePath.MainStack)}>
-          <Text>Press</Text>
-        </Pressable> */}
         <View style={styles.titleWrap}>
           <Typography style={styles.title}>SNS 계정으로 빨리 시작해 보세요</Typography>
           <TouchableOpacity

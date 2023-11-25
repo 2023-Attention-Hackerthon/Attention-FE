@@ -20,7 +20,7 @@ export default function KakaoLoginRedirect({ navigation, route }) {
           //navigate('/auth/finish');
           console.log("가져오기 성공");
           console.log(getRes.data);
-          axios.post(`https://www.attention.n-e.kr/v1/auth/kakao/signup?idtoken=${getRes.data.data.idToken}`).then((postRes) => {
+          axios.post(`https://www.attention.n-e.kr/v1/auth/kakao/login?idtoken=${getRes.data.data.idToken}`).then((postRes) => {
             console.log("post 성공");
             console.log(postRes.data);
             // navigation.navigate("TabOneScreen");
