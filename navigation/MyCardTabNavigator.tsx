@@ -15,7 +15,6 @@ export default function MyCardTabNavigator() {
       screenOptions={{
         ...tabNavigatorOptions,
         headerTitle: "카드",
-        headerTitleAlign: "left",
         headerRight: CreateCardButton,
       }}
     >

@@ -83,7 +83,11 @@ export default function MyWalletDetailScreen({
           //   />
           // </View>
 
-          <ScrollView pagingEnabled contentContainerStyle={{ gap: 20, paddingVertical: 50 }}>
+          <ScrollView
+            pagingEnabled
+            contentContainerStyle={{ gap: 20, paddingVertical: 50 }}
+            showsHorizontalScrollIndicator={false}
+          >
             {imageFileUrls.map((uri) => (
               <Image
                 key={uri}
