@@ -1,32 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import Typography from "../../components/common/Typography";
-import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import RoutePath from "../../navigation/routePath";
-import { Card, CardList } from "../../types/Card";
+import { ScrollView } from "react-native-gesture-handler";
+import Typography, { TextType } from "../../components/common/Typography";
+import CardTemplate from "../../components/CardTemplate";
+import Colors from "../../constants/Colors";
+import _ from "lodash";
+import { baseAxios } from "../../apis/baseAxios";
+import { useQuery } from "@tanstack/react-query";
+import { ErrorText, LoadingText } from "../wallet/MyWalletDetailScreen";
+import CardPreview from "../../components/CardPreview";
+import { CardList } from "../../types/Card";
 
 export default function MyCardsScreen() {
-  const navigation = useNavigation();
+  const [cards, setCards] = useState<CardList>([]);
 
-  const navigateDetailCardPage = (card: Card) => {
-    //@ts-ignore
-    navigation.navigate(RoutePath.MyCardDetailScreen, {
-      params: {
-        card,
-      },
-    });
-  };
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["getCardList"],
+    queryFn: getCardList,
+  });
 
-  const mockCards: CardList = [{ id: 1 }, { id: 2 }, { id: 3 }];
+  useEffect(() => {
+    if (data) {
+      setCards(data.data);
+    }
+  }, [data]);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center" }}>
-      {mockCards.map((card) => (
-        <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={card.id}>
-          <Typography>내 카드 페이지 {card.id}</Typography>
-        </TouchableOpacity>
-      ))}
-    </View>
+    <ScrollView
+      horizontal
+      contentContainerStyle={{
+        gap: 30,
+        justifyContent: "center",
+        alignItems: "center",
+        paddingHorizontal: 40,
+      }}
+      showsHorizontalScrollIndicator={false}
+    >
+      {(() => {
+        if (isLoading || !data) {
+          return <LoadingText />;
+        }
+        if (isError) {
+          return <ErrorText />;
+        }
+        if (_.isEmpty(cards)) {
+          return <EmptyCard />;
+        }
+        return cards.map((card) => <CardPreview card={card} key={card.id} />);
+      })()}
+    </ScrollView>
   );
 }
+
+const EmptyCard = () => {
+  return (
+    <CardTemplate>
+      <Typography type={TextType.Title1} style={{ color: Colors.text.alternative }}>
+        카드가 없어요
+      </Typography>
+      <View>
+        <Typography type={TextType.Body1} style={{ color: Colors.text.alternative }}>
+          상단의 + 버튼을 클릭해서
+        </Typography>
+        <Typography type={TextType.Body1} style={{ color: Colors.text.alternative }}>
+          카드를 만들어보세요
+        </Typography>
+      </View>
+    </CardTemplate>
+  );
+};
+
+export const getCardList = async () => {
+  const { data } = await baseAxios.get(`/api/wallets/cards`);
+  return data;
+};

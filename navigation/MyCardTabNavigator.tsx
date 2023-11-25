@@ -12,7 +12,11 @@ export default function MyCardTabNavigator() {
   return (
     <NativeStack.Navigator
       initialRouteName={RoutePath.MyCardsScreen}
-      screenOptions={{ ...tabNavigatorOptions, headerTitle: "카드", headerRight: CreateCardButton }}
+      screenOptions={{
+        ...tabNavigatorOptions,
+        headerTitle: "카드",
+        headerRight: CreateCardButton,
+      }}
     >
       <NativeStack.Screen name={RoutePath.MyCardsScreen} component={MyCardsScreen} />
       <NativeStack.Screen name={RoutePath.MyCardDetailScreen} component={MyCardDetailScreen} />

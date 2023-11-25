@@ -3,11 +3,19 @@
 import { AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import Svg, { Path } from "react-native-svg";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import RoutePath from "./routePath";
 import MyCardTabNavigator from "./MyCardTabNavigator";
 import MyWalletTabNavigator from "./MyWalletTabNavigator";
+import {
+  CardOff,
+  CardOn,
+  MyOff,
+  MyOn,
+  WalletOn,
+  WalletOff,
+} from "../components/icons/BottomTabIcon";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -20,7 +28,8 @@ export default function MainNavigator() {
         options={{
           tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: (props) => <AntDesign name="idcard" {...props} />,
+          tabBarLabel: () => null,
+          tabBarIcon: ({ focused }) => (focused ? <CardOn /> : <CardOff />),
         }}
       />
       <BottomTab.Screen
@@ -29,7 +38,8 @@ export default function MainNavigator() {
         options={{
           tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: (props) => <SimpleLineIcons name="wallet" {...props} />,
+          tabBarLabel: () => null,
+          tabBarIcon: ({ focused }) => (focused ? <WalletOn /> : <WalletOff />),
         }}
       />
       <BottomTab.Screen
@@ -38,7 +48,8 @@ export default function MainNavigator() {
         options={{
           tabBarLabelPosition: "below-icon",
           headerShown: false,
-          tabBarIcon: (props) => <AntDesign name="user" {...props} />,
+          tabBarLabel: () => null,
+          tabBarIcon: ({ focused }) => (focused ? <MyOn /> : <MyOff />),
         }}
       />
     </BottomTab.Navigator>
