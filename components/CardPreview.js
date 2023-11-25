@@ -5,28 +5,31 @@ import * as Sharing from "expo-sharing";
 import Typography from "./common/Typography";
 import CardComponent from "./common/CardComponent";
 import Colors from "../constants/Colors";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
+import RoutePath from "../navigation/routePath";
 
 export default function CardPreview({ card }) {
   const [url, setUrls] = useState("");
   const viewRef = useRef();
 
   setUrls;
-  // const navigation = useNavigation();
-  // const navigateDetailCardPage = (card) => {
-  //   //@ts-ignore
-  //   navigation.navigate(RoutePath.MyCardDetailScreen, {
-  //     params: {
-  //       card,
-  //     },
-  //   });
-  // };
+  const navigation = useNavigation();
+  const navigateDetailCardPage = (card) => {
+    //@ts-ignore
+    navigation.navigate(RoutePath.MyCardDetailScreen, {
+      params: {
+        ...card,
+      },
+    });
+  };
 
   return (
     <View style={{ gap: 30 }}>
       <ViewShot ref={viewRef} options={{ fileName: "shared", format: "png", quality: 1 }}>
-        {/* <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={card.id}> */}
-        <CardComponent card={card} />
-        {/* </TouchableOpacity> */}
+        <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={card.id}>
+          <CardComponent card={card} />
+        </TouchableOpacity>
       </ViewShot>
       <View style={{ flexDirection: "row", gap: 8, justifyContent: "space-between" }}>
         <Pressable
