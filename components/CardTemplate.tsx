@@ -22,7 +22,7 @@ export default function CardTemplate({ backgroudColor = "#747075", children }: C
   return (
     <View>
       <Text>
-        <SvgXml xml={template} />;
+        <SvgXml xml={template} />
       </Text>
       <View
         style={{

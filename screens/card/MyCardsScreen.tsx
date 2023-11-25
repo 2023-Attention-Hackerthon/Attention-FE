@@ -16,7 +16,6 @@ import RoutePath from "../../navigation/routePath";
 export default function MyCardsScreen() {
   const [cards, setCards] = useState<CardList>([]);
   const navigation = useNavigation();
-  setCards;
 
   const navigateDetailCardPage = (card: CardType) => {
     //@ts-ignore
@@ -41,12 +40,11 @@ export default function MyCardsScreen() {
   return (
     <ScrollView
       horizontal
-      pagingEnabled
       contentContainerStyle={{
-        columnGap: 30,
+        gap: 30,
         justifyContent: "center",
         alignItems: "center",
-        paddingHorizontal: 50,
+        paddingHorizontal: 40,
       }}
       showsHorizontalScrollIndicator={false}
     >
@@ -61,9 +59,9 @@ export default function MyCardsScreen() {
           return <EmptyCard />;
         }
         return cards.map((card) => (
-          // <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={card.id}>
-          <CardComponent card={card} />
-          // </TouchableOpacity>
+          //  <TouchableOpacity onPress={() => navigateDetailCardPage(card)} key={card.id}>
+          <CardComponent key={card.id} card={card} />
+          //  </TouchableOpacity>
         ));
       })()}
     </ScrollView>
