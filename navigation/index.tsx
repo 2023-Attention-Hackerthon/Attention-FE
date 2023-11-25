@@ -24,7 +24,12 @@ function RootNavigator() {
   const { isAuthenticated } = useAppRepository();
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={isAuthenticated ? RoutePath.MainStack : RoutePath.LoginScreen}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName={isAuthenticated ? RoutePath.MainStack : RoutePath.LoginScreen}
+    >
       {(() => {
         if (!isAuthenticated) {
           return (
@@ -38,7 +43,11 @@ function RootNavigator() {
         return (
           <>
             <Stack.Screen name={RoutePath.MainStack} component={MainNavigator} />
-            <Stack.Screen name={RoutePath.NotFoundScreen} component={NotFoundScreen} options={{ title: "Oops!" }} />
+            <Stack.Screen
+              name={RoutePath.NotFoundScreen}
+              component={NotFoundScreen}
+              options={{ title: "Oops!" }}
+            />
           </>
         );
       })()}
