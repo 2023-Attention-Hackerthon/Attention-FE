@@ -4,17 +4,18 @@ import useToken from "../hooks/useToken";
 import Typography from "../components/common/Typography";
 import { View } from "react-native";
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const { setTokenStorage } = useToken();
 
   const login = () => {
-    setTokenStorage("tokentoken");
+    navigation.navigate("KakaoLoginWebview");
+    // setTokenStorage("tokentoken");
   };
 
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
       <TouchableOpacity onPress={login}>
-        <Typography>로그인로그인</Typography>
+        <Typography>카카오 로그인</Typography>
       </TouchableOpacity>
     </View>
   );
