@@ -53,7 +53,7 @@ export default function CreateCardScreen({ navigation }) {
     "로맨틱한",
     "빈티지한",
     "특별한",
-    "시크한",
+    "여유로운",
     "중후한",
     "강렬한",
     "귀여운",
