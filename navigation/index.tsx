@@ -12,6 +12,7 @@ import KakaoLoginRedirect from "../screens/login/KakaoLoginRedirect";
 import { Image, ImageBackground, StyleSheet, TouchableOpacity, View } from "react-native";
 import Typography from "../components/common/Typography";
 import CreateCardScreen from "../screens/card/CreateCardScreen";
+import Colors from "../constants/Colors";
 
 export default function Navigation() {
   return (
@@ -66,7 +67,16 @@ function RootNavigator() {
           <>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name={RoutePath.MainStack} component={MainNavigator} options={{ gestureEnabled: false }} />
-            <Stack.Screen name={RoutePath.CreateCardScreen} component={CreateCardScreen} />
+            <Stack.Screen
+              name={RoutePath.CreateCardScreen}
+              component={CreateCardScreen}
+              options={{
+                headerShown: true,
+                headerTitle: "카드 만들기",
+                headerBackTitleVisible: false,
+                headerTintColor: Colors.primary.normal,
+              }}
+            />
             <Stack.Screen name={RoutePath.NotFoundScreen} component={NotFoundScreen} options={{ title: "Oops!" }} />
           </>
         );

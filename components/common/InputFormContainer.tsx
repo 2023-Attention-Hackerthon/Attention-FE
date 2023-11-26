@@ -34,7 +34,8 @@ export default function InputFormContainer({
 const styles = StyleSheet.create({
   inputContainer: {
     width: SCREEN_WIDTH,
-    paddingTop: 150,
+    paddingTop: 80,
+    marginBottom: 30,
     padding: 16,
     // marginVertical: 10, // 위아래 여백 설정
   },
