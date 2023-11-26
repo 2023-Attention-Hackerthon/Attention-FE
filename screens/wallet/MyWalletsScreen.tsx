@@ -26,6 +26,7 @@ export default function MyWalletsScreen() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["getWalletList"],
     queryFn: getWalletList,
+    refetchOnMount: true,
   });
 
   useEffect(() => {
@@ -62,11 +63,7 @@ export default function MyWalletsScreen() {
                   break;
               }
               return (
-                <TouchableOpacity
-                  style={{ alignItems: "center", marginBottom: 20 }}
-                  onPress={() => navigateDetailWalletPage(wallet.id)}
-                  key={wallet.id}
-                >
+                <TouchableOpacity style={{ alignItems: "center", marginBottom: 20 }} onPress={() => navigateDetailWalletPage(wallet.id)} key={wallet.id}>
                   <Image source={url} style={{ width: 80, height: 112, marginBottom: 8 }} />
                   <Typography>{wallet.name}</Typography>
                 </TouchableOpacity>

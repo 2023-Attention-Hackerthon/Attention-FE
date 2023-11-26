@@ -17,6 +17,7 @@ export default function MyCardsScreen() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["getCardList"],
     queryFn: getCardList,
+    refetchOnMount: true,
   });
 
   useEffect(() => {

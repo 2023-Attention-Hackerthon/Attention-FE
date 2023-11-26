@@ -21,6 +21,7 @@ export default function MyWalletDetailScreen({
     queryKey: ["getWallet", id],
     queryFn: () => getWallet(id),
     enabled: Boolean(id),
+    refetchOnMount: true,
   });
 
   useEffect(() => {
@@ -83,11 +84,7 @@ export default function MyWalletDetailScreen({
           //   />
           // </View>
 
-          <ScrollView
-            pagingEnabled
-            contentContainerStyle={{ gap: 20, paddingVertical: 50 }}
-            showsHorizontalScrollIndicator={false}
-          >
+          <ScrollView pagingEnabled contentContainerStyle={{ gap: 20, paddingVertical: 50 }} showsHorizontalScrollIndicator={false}>
             {imageFileUrls.map((uri) => (
               <Image
                 key={uri}

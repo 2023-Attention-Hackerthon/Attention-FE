@@ -5,6 +5,7 @@ import MyCardDetailScreen from "../screens/card/MyCardDetailScreen";
 import MyCardsScreen from "../screens/card/MyCardsScreen";
 import { tabNavigatorOptions } from "./options";
 import CreateCardButton from "../components/CreateCardButton";
+import Colors from "../constants/Colors";
 
 const NativeStack = createNativeStackNavigator();
 
@@ -19,7 +20,11 @@ export default function MyCardTabNavigator() {
       }}
     >
       <NativeStack.Screen name={RoutePath.MyCardsScreen} component={MyCardsScreen} />
-      <NativeStack.Screen name={RoutePath.MyCardDetailScreen} component={MyCardDetailScreen} />
+      <NativeStack.Screen
+        name={RoutePath.MyCardDetailScreen}
+        component={MyCardDetailScreen}
+        options={{ headerTintColor: Colors.primary.normal, headerTitleStyle: { color: "black" } }}
+      />
     </NativeStack.Navigator>
   );
 }

@@ -7,6 +7,7 @@ import { Image, ScrollView, TextInput, TouchableOpacity, View } from "react-nati
 import Typography from "../../components/common/Typography";
 import Colors from "../../constants/Colors";
 import baseAxios from "../../apis/baseAxios";
+import { useMutation } from "@tanstack/react-query";
 
 export default function CreateCardScreen({ navigation }) {
   const [card, setCard] = useState<Partial<Card>>({
@@ -85,39 +86,29 @@ export default function CreateCardScreen({ navigation }) {
 
   // 마지막 페이지
   const [cardName, setCardName] = useState<string>("");
-  // const { mutate: createCard, isLoading } = useMutation({
-  //   // 여기에 axios function
-  //   mutationFn: putShopConnectionWithBrand,
-  //   onSuccess: () => {
-  //     //Todo
-  //   },
-  // });
-
-  const sendDatas = {
-    nickname: card.nickname,
-    cardName: cardName,
-    contact: phone,
-    gender: selectedGender === 0 ? "MALE" : selectedGender === 1 ? "FEMALE" : "",
-    age: card.age,
-    mbti: selectedMBTI,
-    adjective: selectedAdjective,
-    introduce: introduce,
-    instagramId: insta,
-    blogUrl: blog,
-    youtubeUrl: youtube,
-    githubId: github,
-  };
-
-  const createCard = () => {
-    baseAxios
-      .post("/api/cards/1/create", sendDatas)
-      .then((res) => {
-        navigation.goBack();
-      })
-      .catch((err) => {
-        console.log(err);
+  const { mutate: createCard, isLoading } = useMutation({
+    // 여기에 axios function
+    mutationFn: () => {
+      console.log("hi");
+      return postCard({
+        nickname: card.nickname,
+        cardName: cardName,
+        contact: phone,
+        gender: selectedGender === 0 ? "MALE" : selectedGender === 1 ? "FEMALE" : "",
+        age: card.age,
+        mbti: selectedMBTI,
+        adjective: selectedAdjective,
+        introduce: introduce,
+        instagramId: insta,
+        blogUrl: blog,
+        youtubeUrl: youtube,
+        githubId: github,
       });
-  };
+    },
+    onSuccess: () => {
+      navigation.goBack();
+    },
+  });
 
   // const navigateLoadingCreatePage = () => {
   //   //@ts-ignore
@@ -161,6 +152,11 @@ export default function CreateCardScreen({ navigation }) {
       </TouchableOpacity>
     );
   };
+
+  if (isLoading) {
+    console.log("loading..");
+    return <Typography>loading...</Typography>;
+  }
 
   return (
     <ScrollView horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
@@ -343,8 +339,8 @@ export default function CreateCardScreen({ navigation }) {
               width: "90%",
               alignItems: "center",
             }}
-            disabled={disabled}
-            onPress={createCard}
+            // disabled={disabled}
+            onPress={() => createCard()}
           >
             <Typography>완료하기</Typography>
           </TouchableOpacity>
@@ -355,3 +351,8 @@ export default function CreateCardScreen({ navigation }) {
 }
 
 const MBTI = ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"];
+
+export const postCard = async (card) => {
+  const { data } = await baseAxios.post(`/api/wallets/cards`, card);
+  return data;
+};
