@@ -122,7 +122,7 @@ function getFontColor(backgroundColor: string) {
     case "#003329":
       return "#B3FFF0";
     case "#B3FFF0":
-      return "003329";
+      return "#003329";
 
     case "#B3FFF0":
       return "#003329";
